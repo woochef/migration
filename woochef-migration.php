@@ -66,6 +66,7 @@ final class WooChef_Migration {
 	 */
 	public function load_classes() {
 		if ( is_admin() ) {
+			require WCMIGRATION_PATH . 'includes/list/class-wcmigration-file-list-table.php';
 			require WCMIGRATION_PATH . 'includes/class-wcmigration-menu.php';
 			require WCMIGRATION_PATH . 'views/admin/class-wcmigration-view-admin.php';
 		}
