@@ -39,6 +39,15 @@ class WCMigration_File_List_Table extends WP_List_Table {
 	public function prepare_items() {
 		$this->items = array();
 
+		foreach ( WCMigration::get_wcmigration_migration_files() as $value ) {
+			$this->items[] = array(
+				'location' => basename( $value ),
+				'module'   => 'woochef-migration',
+				'status'   => '<mark style="max-width: 100%; border-radius: 4px; padding: 10px; line-height: 2.5em; border-bottom: 1px solid rgba(0, 0, 0, .05); background: #f8dda7;color: #94660c;"><span>new</span></mark>',
+				'action'   => sprintf( '<a href="admin.php?page=wcmigration&action=wcmigration-migrate&item=%s" class="button button-primary">Migrate</button>', $value )
+			);
+		}
+
 		$this->set_pagination_args( array(
 			'total_items' => 0,
 			'per_page'    => 20
